@@ -13,6 +13,7 @@ create database mongodb eki_indradi_test (without user & password)
 
 # create file .env
 
+`
 DB_USERNAME=
 DB_PASSWORD=
 DB=eki_indradi_test
@@ -35,3 +36,5 @@ AWS_SECRET_KEY=asdadasdas/asdasdasda
 PROTOCOL=http
 SETTING_CORS=*
 PORT=3000
+
+`
