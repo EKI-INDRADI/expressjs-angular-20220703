@@ -1,0 +1,6 @@
+
+ng g service book-list/book-list
+ng g c book-list
+ng g c book-list/book-list-whislist
+
+tinggal bikin unwishlist dan update wishlist di get dan rapihin UI

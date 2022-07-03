@@ -1,0 +1,171 @@
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <button [routerLink]="'/book-list-page'" type="button" class="btn btn-primary">BOOK LIST</button> | WISHLIST | {{(user_login)? user_login : "CLICK BOOK LIST FIRST FOR AUTO GENERATE USER" }}
+        </div>
+
+        <div class="card-body">
+
+            <form standalone>
+
+                <!-- <div class="input-group">
+                    <input type="text" required [(ngModel)]="var_search" placeholder="SEARCH BOOK"
+                        (keyup.enter)="get_api_func(0,1)" [ngModelOptions]="{standalone: true}" class="form-control">
+
+                </div> -->
+
+            </form>
+
+            <div class="album py-5 bg-light">
+                <div class="container">
+                    <div class="row">
+
+                        <ng-container *ngFor="let dataHTML of arr_data; let i_a=index">
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <div align="center">
+                                        <img class="card-img-top"
+                                            src="{{(dataHTML.smallThumbnail)? dataHTML.smallThumbnail : 'https://uxwing.com/wp-content/themes/uxwing/download/07-web-app-development/image-not-found.png'}}"
+                                            alt="Thumbnail [100%x245]"
+                                            style="height: 345px; width: 230px; display: block;"
+                                            data-holder-rendered="true">
+                                    </div>
+
+
+
+                                    <div class="card-body">
+                                        <b>
+                                            <div align="left" class="card-text">
+                                                {{dataHTML.title? dataHTML.title : ''}} <br>
+                                                <br>
+                                                AUTHOR : {{dataHTML.authorString}} <br>
+                                                RELEASE : {{dataHTML.publishedDate?
+                                                dataHTML.publishedDate : ''}} <br>
+                                                TYPE : {{dataHTML.printType? dataHTML.printType :
+                                                ''}}
+                                            </div>
+                                        </b><br>
+
+
+                                        <p class="card-text"> </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group" align="center">
+
+                                                <!-- 
+                                                <button [routerLink]="'/BOOK-page/edit/'+dataHTML.id" type="button"
+                                                    class="btn btn-sm btn-outline-secondary">Edit</button>
+                                                <button [routerLink]="'/BOOK-page/delete/'+dataHTML.id" type="button"
+                                                    class="btn btn-sm btn-outline-secondary">Delete</button> -->
+
+
+
+                                                <button (click)="delete_wishlist(i_a)" type="button"
+                                                class="btn btn-sm btn-primary">UNWISHLIST</button>
+
+
+
+                                                <button (click)="openNewTab(dataHTML.infoLink)" type="button"
+                                                    class="btn btn-sm btn-outline-secondary">GET</button>
+                                                <!--                                                 
+                                                <button [routerLink]="'/BOOK-page/delete/'+dataHTML.id" type="button"
+                                                    class="btn btn-sm btn-outline-secondary">Delete</button> -->
+
+
+                                            </div>
+                                            <small class="text-muted"> </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+            <ng-container *ngIf="Jumlah_Halaman == 1  || Jumlah_Halaman == 0 else else_pagination">
+
+            </ng-container>
+
+            <ng-template #else_pagination>
+
+                <div align="right">
+
+                    <div *ngIf="Jumlah_Halaman>1" class="label-info-pagination">
+                        <label class="c-grey fs-12 fw-500">Halaman {{var_halaman_aktif_number}} dari {{Jumlah_Halaman}}
+                            halaman,
+                            (Total
+                            data BOOK {{Jumlah_Data_Table}})</label>
+                    </div>
+
+
+
+                    <div class="btn-group" role="group" aria-label="Basic example" align="center">
+
+                        <button type="button" (click)="page_first()" class="btn btn-secondary">
+                            First</button>
+
+                        <button type="button" (click)="page_prev()" class="btn btn-secondary">
+                            &laquo;</button>
+
+                        <ng-container *ngIf="var_halaman_aktif_number -2 < 1 ; else jika_bukan_2">
+
+                        </ng-container>
+
+                        <ng-template #jika_bukan_2>
+                            <button type="button" (click)="page_min2()" class="btn btn-secondary">
+                                {{var_halaman_aktif_number -2}}</button>
+                        </ng-template>
+
+                        <ng-container *ngIf="var_halaman_aktif_number -1 < 1 ; else jika_bukan_1">
+
+                        </ng-container>
+
+                        <ng-template #jika_bukan_1>
+                            <button type="button" (click)="page_min1()" class="btn btn-secondary">
+                                {{var_halaman_aktif_number -1}}</button>
+                        </ng-template>
+
+                        <button type="button" (click)="page_aktif()" class="btn btn-info">
+                            {{var_halaman_aktif_number}}</button>
+
+                        <ng-container *ngIf="var_halaman_aktif_number + 1 > Jumlah_Halaman; else jika_1">
+
+                        </ng-container>
+
+                        <ng-template #jika_1>
+                            <button type="button" (click)="page_plus1()" class="btn btn-secondary">
+                                {{var_halaman_aktif_number +1}}</button>
+                        </ng-template>
+
+
+                        <ng-container *ngIf="var_halaman_aktif_number + 2 > Jumlah_Halaman; else jika_2">
+
+                        </ng-container>
+
+                        <ng-template #jika_2>
+                            <button type="button" (click)="page_plus2()" class="btn btn-secondary">
+                                {{var_halaman_aktif_number +2}}</button>
+                        </ng-template>
+
+                        <button type="button" (click)="page_next()" class="btn btn-secondary">
+                            &raquo;</button>
+
+                        <!-- <button type="button" (click)="page_last()" class="btn btn-secondary"> // TOTAL DATA GOOGLE SALAH JADI BUAT BUG
+                            Last
+                        </button> -->
+
+                    </div>
+
+                    <br>
+                    <br>
+                </div>
+
+
+            </ng-template>
+
+        </div>
+    </div>
+</div>

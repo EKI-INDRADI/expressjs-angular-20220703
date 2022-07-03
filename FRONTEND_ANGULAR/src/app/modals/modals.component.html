@@ -1,0 +1,46 @@
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+        </div>
+        <div class="card-body">
+
+            <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+                <h1 class="display-4">Modals Portable</h1>
+                <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, fuga iure totam maiores porro illum reprehenderit repellendus optio iste tempore ad eveniet inventore deleniti. Ab molestiae nostrum ipsa asperiores accusantium?.</p>
+            </div>
+
+            <div class="container">
+                <div class="card-deck mb-3 text-center">
+                   
+                   
+                    <!-- https://jasonwatmore.com/post/2019/07/12/angular-8-custom-modal-window-dialog-box -->
+
+                    <div>
+                        <h1>Home</h1>
+                        <p>{{bodyText}}</p>
+                        <button (click)="openModal('custom-modal-1')">Open Modal 1</button>
+                        <button (click)="openModal('custom-modal-2')">Open Modal 2</button>
+                    </div>
+                    
+                    <jw-modal id="custom-modal-1">
+                        <h1>A Custom Modal!</h1>
+                        <p>Home page text: <input type="text" [(ngModel)]="bodyText" /></p>
+                        <button (click)="closeModal('custom-modal-1');">Close</button>
+                    </jw-modal>
+                    
+                    <jw-modal id="custom-modal-2">
+                        <h1 style="height:450px">A Tall Custom Modal!</h1>
+                        <button (click)="closeModal('custom-modal-2');">Close</button>
+                    </jw-modal>
+
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
