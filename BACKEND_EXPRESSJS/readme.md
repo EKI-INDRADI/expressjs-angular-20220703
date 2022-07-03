@@ -1,0 +1,37 @@
+
+# connection
+
+./.env
+
+./middlewares/config/db.config.js
+
+./middlewares/connection.js
+
+
+create database mongodb eki_indradi_test (without user & password)
+
+
+# create file .env
+
+DB_USERNAME=
+DB_PASSWORD=
+DB=eki_indradi_test
+DB_HOST=localhost
+DB_PORT=27017
+JWT_SECRET_KEY=XEKITESTINGX
+
+API_3RD_HOST=https://www.googleapis.com
+API_3RD_ID=
+API_3RD_SECRET_KEY=
+API_3RD_TYPE=
+API_3RD_MAX_REQUEST=5
+API_3RD_API_JWT_TOKEN=XEKITESTINGXBYPASSJWT
+
+AWS_BUCKET_NAME=ekitesting-xxx
+AWS_BUCKER_URL=bucketURL
+AWS_ACCESS_KEY_ID=asdasdasdada
+AWS_SECRET_KEY=asdadasdas/asdasdasda
+
+PROTOCOL=http
+SETTING_CORS=*
+PORT=3000

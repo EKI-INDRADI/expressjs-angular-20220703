@@ -1,0 +1,34 @@
+{
+  "name": "forstok-20220103",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./app.local.js",
+    "start:nodemon": "set MODE='LIVE' && nodemon app.local.js ",
+    "start:dev": "set MODE='LIVE' && nodemon app.local.js ",
+    "start:test": "set MODE='TEST' && nodemon app.local.js ",
+    "start:live": "set MODE='LIVE' && nodemon app.local.js "
+  },
+  "author": {
+    "name": "EKI INDRADI"
+  },
+  "dependencies": {
+    "aws-serverless-express": "^3.4.0",
+    "axios": "^0.21.1",
+    "bcryptjs": "^2.4.3",
+    "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
+    "express": "~4.16.1",
+    "form-data": "^4.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "moment-timezone": "^0.5.34",
+    "mongoose": "^5.9.22",
+    "morgan": "~1.9.1",
+    "qs": "^6.10.3",
+    "request": "^2.88.2",
+    "unirest": "^0.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
